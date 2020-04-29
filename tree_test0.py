@@ -36,7 +36,7 @@ def createTree0(inMu0,inStd0):
     
     
     #print(cloud)
-    print(RenderTree(cloud, style=AsciiStyle()).by_attr())
+    #print(RenderTree(cloud, style=AsciiStyle()).by_attr())
     # 
     return cloud
 
@@ -66,7 +66,7 @@ def createTree1(inMu0,inStd0):
     edge3_2 = Node("edge3_2", parent=fog3, inMu=inMu0, inStd=inStd0)
     
     #print(cloud)
-    print(RenderTree(cloud, style=AsciiStyle()).by_attr())
+    #print(RenderTree(cloud, style=AsciiStyle()).by_attr())
     # 
     return cloud
 '''
@@ -204,11 +204,11 @@ def numDevTotal(muDevFreq,stdDevFreq,level,tree,conf0):
                 varIn = varIn + stdij*stdij
                 stdInTotal = stdInTotal + stdij
             #stdInTotal = stdInTotal + sqrt(varIn)
-        print('muInTotal',muInTotal)
+        #print('muInTotal',muInTotal)
         
         #stdInTotal = sqrt(varIn)
         stdInTotal = stdInTotal*2 
-        print('stdInTotal',stdInTotal)
+        #print('stdInTotal',stdInTotal)
         cvInTotal = stdInTotal/muInTotal
         conf = conf0
         numDev = getDevNum(muDevFreq,stdDevFreq, muInTotal,cvInTotal, conf)
@@ -233,7 +233,7 @@ def numDevTotal(muDevFreq,stdDevFreq,level,tree,conf0):
         Pr_fog = k_IN_n_solver(Pr,x,numFog,numFog)
         #Pr_fog = Pr**(1/numFog)
         Pf_fog = 1-Pr_fog
-        print('Pf_fog',Pf_fog)
+        #print('Pf_fog',Pf_fog)
         for i in range(numFog):
             numEdge = len(tree.children[i].children)
             #Pf_fog = Pf**(1/numFog)
@@ -242,7 +242,7 @@ def numDevTotal(muDevFreq,stdDevFreq,level,tree,conf0):
             if numEdge>2:
                 thresEdge = ceil(numEdge/2)
             Pr_edge = k_IN_n_solver(Pr_fog,x,thresEdge,numEdge)
-            print('Pf_edge',1-Pr_edge)
+            #print('Pf_edge',1-Pr_edge)
             conf = Pr_edge
             for j in range(numEdge):
                 muIn_ij = tree.children[i].children[j].inMu
